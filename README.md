@@ -11,7 +11,7 @@
 
 3 - node index.js
 
-# Alerta
+# ⚠️  Alerta
 
 O projeto tem como intuito, colocar em pratica o aprendizado de JS e Node.js.
 Não me responsabilizo pelo uso indevido da aplicação.
