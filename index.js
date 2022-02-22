@@ -31,12 +31,13 @@ async function handle() {
   logger.log(6, { email, password });
   logger.log(7, { email, password });
 
-
   for (let i = 0; i < courses.length; i++) {
     let parse = await getCourse(access_token, courses[i][1]);
 
     logger.log(8, { email, password });
     let infos = JSON.parse(parse);
+
+    console.log(infos)
 
     logger.log(3, {
       id: infos.id,
@@ -48,21 +49,22 @@ async function handle() {
     let folderName = infos.name.replace(":", " -");
     createFolder(folderName);
 
-    for (const title of infos.sections) {
-      logger.log(4, { title: title.titulo });
-      createFolder(`${folderName}/${title.position} - ${title.titulo}`);
+    infos.sections.map(async (info) => {
+      logger.log(4, { title: info.titulo });
 
-      for (const lesson of title.videos) {
-        let folderLesson = lesson.nome.replace(":", " -");
-        let url = await getVideo(lesson.id, infos.slug, access_token);
-        logger.log(5, { lesson: lesson.nome, id: lesson.id });
+      createFolder(`${folderName}/${info.position} - ${info.titulo}`);
+
+      info.videos.map(async (video) => {
+        let folderLesson = video.nome.replace(":", " -");
+        let url = await getVideo(video.id, infos.slug, access_token);
+        logger.log(5, { lesson: video.nome, id: video.id });
         videoDownload(
-          `${folderName}/${title.position} - ${title.titulo}/${lesson.position} - ${folderLesson}.mp4`,
+          `${folderName}/${info.position} - ${info.titulo}/${video.position} - ${folderLesson}.mp4`,
           url,
           folderLesson
         );
-      }
-    }
+      })
+    });
   }
 }
 
