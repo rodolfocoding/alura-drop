@@ -1,5 +1,3 @@
-'use strict';
-
 const ansi = require('ansi-colors');
 
 function log(type, infos) {

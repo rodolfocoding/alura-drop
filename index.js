@@ -21,9 +21,9 @@ async function handle() {
 
   logger.log(1, { email, password });
 
-  let access_token = await logIn(email, password);
+  let accessToken = await logIn(email, password);
 
-  if (!access_token) {
+  if (!accessToken) {
     logger.log(2, { email, password });
     return;
   }
@@ -32,7 +32,7 @@ async function handle() {
   logger.log(7, { email, password });
 
   for (let i = 0; i < courses.length; i++) {
-    let parse = await getCourse(access_token, courses[i][1]);
+    let parse = await getCourse(accessToken, courses[i][1]);
 
     logger.log(8, { email, password });
     let infos = JSON.parse(parse);
@@ -54,7 +54,7 @@ async function handle() {
 
       info.videos.map(async (video) => {
         let folderLesson = video.nome.replace(":", " -");
-        let url = await getVideo(video.id, infos.slug, access_token);
+        let url = await getVideo(video.id, infos.slug, accessToken);
         logger.log(5, { lesson: video.nome, id: video.id });
         videoDownload(
           `${folderName}/${info.position} - ${info.titulo}/${video.position} - ${folderLesson}.mp4`,

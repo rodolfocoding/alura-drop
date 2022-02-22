@@ -1,8 +1,8 @@
 const httpRequest = require('./httpRequest')
 
-async function getVideo(id, slug, token) {
+async function getVideo(id, queryParameter, token) {
   let res = await httpRequest({
-    url: `https://cursos.alura.com.br/mobile/courses/${slug}/busca-video-${id}`,
+    url: `https://cursos.alura.com.br/mobile/courses/${queryParameter}/busca-video-${id}`,
     headers: {
       "Content-Type": "application/x-www-form-urlencoded",
       "User-Agent": "alura-mobi/android",
