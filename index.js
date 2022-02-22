@@ -37,8 +37,6 @@ async function handle() {
     logger.log(8, { email, password });
     let infos = JSON.parse(parse);
 
-    console.log(infos)
-
     logger.log(3, {
       id: infos.id,
       slug: infos.slug,
