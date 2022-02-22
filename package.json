@@ -1,0 +1,30 @@
+{
+  "name": "aluradrop",
+  "version": "1.0.0",
+  "description": "Download videos from alura",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "alura",
+    "download",
+    "videos"
+  ],
+  "author": "rodolfocoding",
+  "license": "ISC",
+  "dependencies": {
+    "ansi-colors": "^4.1.1",
+    "axios": "^0.19.2",
+    "dotenv": "^16.0.0",
+    "request": "^2.88.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rodolfocoding/alura-drop.git"
+  },
+  "bugs": {
+    "url": "https://github.com/rodolfocoding/alura-drop/issues"
+  },
+  "homepage": "https://github.com/rodolfocoding/alura-drop#readme"
+}
